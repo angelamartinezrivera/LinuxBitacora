@@ -49,3 +49,79 @@ Después de realizar los cambios:
 ## Paso 4: Verificación de cambios
 Finalmente, verificamos los cambios realizados accediendo a la página de bienvenida desde el navegador.
 
+
+# Práctica 2
+
+## Propósito de la práctica
+
+Conseguir una conexión entre un repositorio personal de GitHub y nuestra distribución Ubuntu con Nginx, para descargar el archivo HTML de la página creada anteriormente y poder actualizarla cada vez que se realicen cambios desde la plataforma de GitHub hacia la consola de nuestra distribución.
+
+## Paso 1: Verificar usuario en consola
+
+Utilizamos el comando:
+
+- `bash`  
+  Nos permite asegurarnos de que estamos trabajando con el usuario correcto en la consola de Linux.
+
+## Paso 2: Actualizar el sistema
+
+Ejecutamos los siguientes comandos de manera consecutiva:
+
+- `sudo apt upgrade`  
+- `apt list --upgradable`  
+
+Esto nos permite actualizar los programas del sistema y asegurarnos de que podemos instalar nuevas herramientas necesarias.
+
+## Paso 3: Instalar Git
+
+Instalamos Git en nuestra distribución con el siguiente comando:
+
+- `apt install git`  
+
+Presionamos `y` para aceptar las condiciones de instalación y continuar con el proceso.
+
+## Paso 4: Ubicar la ruta del servidor web
+
+Nos dirigimos a la carpeta donde el sistema proyecta los archivos HTML del servidor:
+
+- `cd /var/www/html`  
+
+Esta es la ruta donde Nginx busca los archivos para mostrarlos en el navegador.
+
+## Paso 5: Clonar el repositorio de GitHub
+
+Descargamos el repositorio como una nueva carpeta dentro de la ruta seleccionada con el siguiente comando:
+
+- `git clone [URL del repositorio]`  
+
+Esto crea una carpeta con el nombre del repositorio dentro de `/var/www/html`.
+
+## Paso 6: Verificar que el repositorio se descargó correctamente
+
+Primero usamos:
+
+- `ls`  
+
+Aquí debe aparecer el nombre del repositorio (generalmente en color azul).
+
+Después accedemos a la carpeta con:
+
+- `cd /var/www/html/LinuxBitacora`  
+
+Finalmente verificamos que el archivo HTML esté dentro usando nuevamente:
+
+- `ls`  
+
+Si aparece el archivo `Index.html`, significa que se descargó correctamente.
+
+## Paso 7: Visualizar la página en el navegador
+
+Escribimos en el navegador la dirección local de nuestro equipo y agregamos el nombre del repositorio y el archivo HTML, separados por diagonales.
+
+En nuestro caso:
+- `http://127.0.0.1/LinuxBitacora/Index.html`
+
+Si todo está correcto, se mostrará la página web.
+
+**Resultado:**  
+<img width="960" height="503" alt="Captura de pantalla 2026-03-02 132004" src="https://github.com/user-attachments/assets/3da87104-2586-4d76-947e-2dbf69086685" />
