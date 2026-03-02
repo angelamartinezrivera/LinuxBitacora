@@ -1,4 +1,4 @@
-# Práctica: Edición del archivo index.html en Linux
+# Práctica 1
 
 ## Propósito de la práctica
 
