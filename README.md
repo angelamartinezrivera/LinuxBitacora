@@ -29,7 +29,6 @@ Después de actualizar el sistema, instalamos un editor de texto:
 Identificamos que el archivo `index` se encuentra en la ruta:
 - `/var/www/html`
 
-
 Para acceder a esa carpeta usamos el siguiente comando:
 
 - `cd /var/www/html`  
