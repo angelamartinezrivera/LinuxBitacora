@@ -52,10 +52,10 @@ Después de realizar los cambios:
 Finalmente, verificamos los cambios realizados accediendo a la página de bienvenida desde el navegador.
 
 ### Antes:
-<img width="455" height="102" alt="Captura de pantalla 2026-03-02 133049" src="https://github.com/user-attachments/assets/278c97e7-ac77-4328-a276-a557fdc5fc24" />
+<img width="960" height="503" alt="Captura de pantalla 2026-03-02 133049" src="https://github.com/user-attachments/assets/278c97e7-ac77-4328-a276-a557fdc5fc24" />
 
 ### Después:
-<img width="457" height="99" alt="Captura de pantalla 2026-03-02 133159" src="https://github.com/user-attachments/assets/d8c9a1fa-ff04-4dae-b7c9-52c28ebb47b6" />
+<img width="960" height="503" alt="Captura de pantalla 2026-03-02 133159" src="https://github.com/user-attachments/assets/d8c9a1fa-ff04-4dae-b7c9-52c28ebb47b6" />
 
 
 # Práctica 2
