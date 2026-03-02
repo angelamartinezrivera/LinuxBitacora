@@ -41,7 +41,7 @@ Una vez dentro de la carpeta, ejecutamos el siguiente comando para abrir y edita
 - `nano index.nginx-debian.html`  
   Abre el archivo `index.nginx-debian.html` con el editor **nano** para poder visualizarlo y modificar su contenido.
 
-<img width="461" height="152" alt="Captura de pantalla 2026-03-02 132907" src="https://github.com/user-attachments/assets/40914cf4-f72d-46de-9c91-e05dc833de1b" />
+<img width="960" height="503" alt="Captura de pantalla 2026-03-02 132907" src="https://github.com/user-attachments/assets/40914cf4-f72d-46de-9c91-e05dc833de1b" />
 
 Después de realizar los cambios:
 - Presionamos `Ctrl + O` para guardar.
