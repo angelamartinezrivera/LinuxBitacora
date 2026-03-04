@@ -206,5 +206,7 @@ Finalmente, realizamos una consulta sencilla para verificar que los registros fu
 SELECT * FROM alumnos;
 ```
 
-Si todo está correcto, deberán mostrarse los 2 registros almacenados en la tabla:
+Si todo está correcto, deberán mostrarse los 2 registros almacenados en la tabla.
+
+**Resultado:** 
 <img width="960" height="503" alt="Captura de pantalla 2026-03-04 153538" src="https://github.com/user-attachments/assets/b1f34100-d15e-4120-bd0d-ffd23e4c4794" />
