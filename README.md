@@ -187,6 +187,7 @@ CREATE TABLE alumnos (
     PRIMARY KEY (matricula),
     UNIQUE KEY (id)
 );
+```sql
 
 <img width="960" height="503" alt="Captura de pantalla 2026-03-04 153434" src="https://github.com/user-attachments/assets/7a5f2573-c129-4088-adb3-447697234382" />
 
