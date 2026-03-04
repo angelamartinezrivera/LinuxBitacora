@@ -133,3 +133,84 @@ Si todo está correcto, se mostrará la página web.
 
 **Resultado:**  
 <img width="960" height="503" alt="Captura de pantalla 2026-03-02 132004" src="https://github.com/user-attachments/assets/3da87104-2586-4d76-947e-2dbf69086685" />
+
+# Práctica 3
+
+## Paso 1: Crear contenedor MySQL en Docker
+
+En Docker se ejecutó la imagen de **MySQL** para crear un nuevo contenedor llamado: `SQL_Prueba1`
+
+Durante la configuración:
+
+- Se asignaron los puertos:
+  - `3306` (puerto principal de MySQL)
+  - `33058` (puerto adicional configurado)
+
+- Se configuró la variable de entorno: `MYSQL_ROOT_PASSWORD`
+Finalmente, se estableció una contraseña creada por nosotros para asegurar el acceso a la base de datos.
+<img width="364" height="356" alt="Captura de pantalla 2026-03-04 151952" src="https://github.com/user-attachments/assets/a52da3c4-c13e-4b19-ba42-691c203afaef" />
+
+## Paso 2: Establecer conexión con la base de datos
+
+Una vez creado el contenedor, se realizó la conexión a la base de datos utilizando el tipo de conexión: `MySQL`
+
+Se ingresaron los datos correspondientes:
+- Host
+- Puerto
+- Usuario (root)
+- Contraseña configurada previamente
+
+<img width="353" height="284" alt="Captura de pantalla 2026-03-04 152349" src="https://github.com/user-attachments/assets/698811d5-3d1e-4544-865e-51979e686b35" />
+
+## Paso 3: Crear la base de datos
+
+Se creó una base de datos llamada: `borrame`
+
+Esta base de datos servirá para realizar pruebas y ejercicios.
+<img width="425" height="262" alt="Captura de pantalla 2026-03-04 152809" src="https://github.com/user-attachments/assets/9a38515d-6342-4509-8418-e2d314cf1921" />
+
+## Paso 4: Crear tablas mediante script SQL
+
+## 🧱 Paso 4: Crear tablas y registros mediante script SQL
+
+A través de un script en lenguaje SQL creamos las tablas y las columnas necesarias para nuestra base de datos.  
+
+Se recomienda importar el script que se encuentra en el repositorio una vez que la base de datos vacía ya esté creada.
+
+---
+
+### 📌 Creación de la tabla
+
+## 🧱 Paso 4: Crear tablas y registros mediante script SQL
+
+A través de un script en lenguaje SQL creamos las tablas y las columnas necesarias para nuestra base de datos.  
+
+Se recomienda importar el script que se encuentra en el repositorio una vez que la base de datos vacía ya esté creada.
+
+El siguiente bloque crea la estructura de la tabla `alumnos`, definiendo el tipo de datos que se pueden insertar en los registros (texto, números, fecha y hora, etc.):
+
+CREATE TABLE alumnos (
+    matricula VARCHAR(20) NOT NULL,
+    id INT NOT NULL AUTO_INCREMENT,
+    nombre VARCHAR(100) NOT NULL,
+    fecha_registro DATETIME DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (matricula),
+    UNIQUE KEY (id)
+);
+
+<img width="297" height="150" alt="Captura de pantalla 2026-03-04 153434" src="https://github.com/user-attachments/assets/7a5f2573-c129-4088-adb3-447697234382" />
+
+Después, insertamos dos registros dentro de la tabla alumnos con el siguiente bloque:
+
+INSERT INTO alumnos (matricula, nombre, fecha_registro) 
+VALUES 
+    ('377308', 'Ángela Martinez Rivera', '1988-01-12 00:00:00'),
+    ('377132', 'Jaaziel Arellano Romero', '1988-01-16 00:00:00');
+
+Finalmente, realizamos una consulta sencilla para verificar que los registros fueron insertados correctamente:
+
+SELECT * FROM alumnos;
+
+Si todo está correcto, deberán mostrarse los 2 registros almacenados en la tabla.
+**Resultado:**  
+<img width="451" height="223" alt="Captura de pantalla 2026-03-04 153538" src="https://github.com/user-attachments/assets/b1f34100-d15e-4120-bd0d-ffd23e4c4794" />
