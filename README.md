@@ -178,7 +178,7 @@ A través de un script en lenguaje SQL creamos las tablas y las columnas necesar
 Se recomienda importar el script que se encuentra en el repositorio una vez que la base de datos vacía ya esté creada.
 
 El siguiente bloque crea la estructura de la tabla `alumnos`, definiendo el tipo de datos que se pueden insertar en los registros (texto, números, fecha y hora, etc.):
-
+```sql
 CREATE TABLE alumnos (
     matricula VARCHAR(20) NOT NULL,
     id INT NOT NULL AUTO_INCREMENT,
