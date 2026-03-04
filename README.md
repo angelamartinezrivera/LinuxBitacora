@@ -148,7 +148,7 @@ Durante la configuración:
 
 - Se configuró la variable de entorno: `MYSQL_ROOT_PASSWORD`
 Finalmente, se estableció una contraseña creada por nosotros para asegurar el acceso a la base de datos.
-<img width="364" height="356" alt="Captura de pantalla 2026-03-04 151952" src="https://github.com/user-attachments/assets/a52da3c4-c13e-4b19-ba42-691c203afaef" />
+<img width="960" height="503" alt="Captura de pantalla 2026-03-04 151952" src="https://github.com/user-attachments/assets/a52da3c4-c13e-4b19-ba42-691c203afaef" />
 
 ## Paso 2: Establecer conexión con la base de datos
 
@@ -160,28 +160,18 @@ Se ingresaron los datos correspondientes:
 - Usuario (root)
 - Contraseña configurada previamente
 
-<img width="353" height="284" alt="Captura de pantalla 2026-03-04 152349" src="https://github.com/user-attachments/assets/698811d5-3d1e-4544-865e-51979e686b35" />
+<img width="960" height="503" alt="Captura de pantalla 2026-03-04 152349" src="https://github.com/user-attachments/assets/698811d5-3d1e-4544-865e-51979e686b35" />
 
 ## Paso 3: Crear la base de datos
 
 Se creó una base de datos llamada: `borrame`
 
 Esta base de datos servirá para realizar pruebas y ejercicios.
-<img width="425" height="262" alt="Captura de pantalla 2026-03-04 152809" src="https://github.com/user-attachments/assets/9a38515d-6342-4509-8418-e2d314cf1921" />
+<img width="960" height="503" alt="Captura de pantalla 2026-03-04 152809" src="https://github.com/user-attachments/assets/9a38515d-6342-4509-8418-e2d314cf1921" />
 
 ## Paso 4: Crear tablas mediante script SQL
 
-## 🧱 Paso 4: Crear tablas y registros mediante script SQL
-
-A través de un script en lenguaje SQL creamos las tablas y las columnas necesarias para nuestra base de datos.  
-
-Se recomienda importar el script que se encuentra en el repositorio una vez que la base de datos vacía ya esté creada.
-
----
-
-### 📌 Creación de la tabla
-
-## 🧱 Paso 4: Crear tablas y registros mediante script SQL
+### Creación de la tabla
 
 A través de un script en lenguaje SQL creamos las tablas y las columnas necesarias para nuestra base de datos.  
 
@@ -198,7 +188,7 @@ CREATE TABLE alumnos (
     UNIQUE KEY (id)
 );
 
-<img width="297" height="150" alt="Captura de pantalla 2026-03-04 153434" src="https://github.com/user-attachments/assets/7a5f2573-c129-4088-adb3-447697234382" />
+<img width="960" height="503" alt="Captura de pantalla 2026-03-04 153434" src="https://github.com/user-attachments/assets/7a5f2573-c129-4088-adb3-447697234382" />
 
 Después, insertamos dos registros dentro de la tabla alumnos con el siguiente bloque:
 
@@ -213,4 +203,4 @@ SELECT * FROM alumnos;
 
 Si todo está correcto, deberán mostrarse los 2 registros almacenados en la tabla.
 **Resultado:**  
-<img width="451" height="223" alt="Captura de pantalla 2026-03-04 153538" src="https://github.com/user-attachments/assets/b1f34100-d15e-4120-bd0d-ffd23e4c4794" />
+<img width="960" height="503" alt="Captura de pantalla 2026-03-04 153538" src="https://github.com/user-attachments/assets/b1f34100-d15e-4120-bd0d-ffd23e4c4794" />
