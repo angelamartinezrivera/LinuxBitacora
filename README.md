@@ -203,7 +203,9 @@ VALUES
 
 Finalmente, realizamos una consulta sencilla para verificar que los registros fueron insertados correctamente:
 
+```sql
 SELECT * FROM alumnos;
+```
 
 Si todo está correcto, deberán mostrarse los 2 registros almacenados en la tabla.
 **Resultado:**  
