@@ -210,3 +210,87 @@ Si todo está correcto, deberán mostrarse los 2 registros almacenados en la tab
 
 **Resultado:** 
 <img width="960" height="503" alt="Captura de pantalla 2026-03-04 153538" src="https://github.com/user-attachments/assets/b1f34100-d15e-4120-bd0d-ffd23e4c4794" />
+
+# Práctica #4
+
+## Antes que nada
+### Corremos éste bloque de comandos consecutivamente para poder descargar los programas que necesitemos  
+
+    Bash
+    cd
+    apt upgrade
+    apt update
+    apt list --upgradable
+
+Ubicamos la carpeta donde se encuentra el html de nginx
+
+    cd /var/www/html
+
+Instalamos git para acceder a algún proyecto de Streamlit (example) y python tambibén, indispensabel para correr la página y por si acaso descargamos y actualizamos los compiladores de C, para evitar incompatibilidades:
+
+    apt install git
+    
+    apt install -y python3
+
+    pt update && apt install -y gcc g++
+
+## Duplicamos el repositorio de Git-Hub con éste comando: 
+    git clone https://github.com/streamlit/demo-seattle-weather.git
+recomendamos usar el comando "ls" para verificar que el repositorio se bajó completo
+
+Ahora es necesario usar éstos comandos para poder instalar "uv" que a su vez necesario "curl" para crear el entorno virtual y correr streamlit:
+
+    apt install curl 
+    curl -LsSf https://astral.sh/uv/install.sh | sh 
+    source $HOME/.local/bin/env
+    ls
+    cd /var/www/html/demo-seattle-weather
+    
+## Creamos el entorno dentro de la carpeta con:
+    uv venv
+Lo activamos:
+
+    source .venv/bin/activate 
+Sincronizamos las dependencias:
+
+    uv sync 
+# Ultimos pasos 
+## Para liberar el puerto del navegador y liberar poder proyectar nuestra pag. de streamlit:
+Instalamos nano para editar la configuración del puerto del navegador con:
+ 
+    apt install nano
+
+    nano /etc/nginx/sites-available/default 
+El úlltimo comando abrirá el archivo de configuración para poder editarlo, deberás borrar todo el contenido y pegar el siguiente script:
+
+    server {
+        listen 80;
+        location / {
+            proxy_pass http://127.0.0.1:8501;
+            proxy_http_version 1.1;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection "upgrade";
+            proxy_set_header Host $host;
+        }
+    }
+### Estando adentro y editado el archivo, pondrás los siguientes comandos para guardar y salir:
+Teclear:
+- control + O 
+- presiona Enter
+- control + X para salir
+
+Después un tienes que cerrar el servicio nginx para dar paso a que la pag. de streamlit se pueda proyectar correctamente en el localhost del navegador:
+
+    service nginx stop
+
+si todo sale bien deberías seguir dentro de la carpeta donde creamos el entorno virtual (ser verá así: “(Nombre-del-repositorio)”), ahora corremos el proyecto de streamlit: 
+
+    streamlit run nombre-de-tu-proyecto.py
+
+### Ahora con escribir el localhost en tu navegador, y podrás ver tu pag. streamlit.
+
+Aviso de errores con Docker-Desktop:
+Los últimos 2 pasos no funcionarán correctamente por lo estrechamente implantado que está nginx en la distribución de ubuntu, cuando corres “service nginx stop” se cierra todo el contenedor con la consola, lo que no permite abrir paso a que la pag. de streamlight pueda proyectarse en el puerto 80 del navegador (que está siempre siendo usado por nginx), y arreglarlo requiere de configurar y editar código fuente de la distribución, cosa que no recomendamos por lo complicado y que criticó que puede resultar para la terminal; por lo que si utilizas éste programa terminará viéndose algo así:
+![image.png](https://raw.githubusercontent.com/bucketio/img1/main/2026/03/10/1773176283654-05158509-5b87-4f69-97ad-5bc1897646ec.png 'image.png')
+
+
