@@ -293,4 +293,114 @@ Aviso de errores con Docker-Desktop:
 Los últimos 2 pasos no funcionarán correctamente por lo estrechamente implantado que está nginx en la distribución de ubuntu, cuando corres “service nginx stop” se cierra todo el contenedor con la consola, lo que no permite abrir paso a que la pag. de streamlight pueda proyectarse en el puerto 80 del navegador (que está siempre siendo usado por nginx), y arreglarlo requiere de configurar y editar código fuente de la distribución, cosa que no recomendamos por lo complicado y que criticó que puede resultar para la terminal; por lo que si utilizas éste programa terminará viéndose algo así:
 ![image.png](https://raw.githubusercontent.com/bucketio/img1/main/2026/03/10/1773176283654-05158509-5b87-4f69-97ad-5bc1897646ec.png 'image.png')
 
+# Práctica 5
+## Paso 1: Crear base de datos
 
+En **DBeaver** creamos una nueva base de datos llamada:
+
+`tarea`
+<img width="960" height="503" alt="Captura de pantalla 2026-03-10 174351" src="https://github.com/user-attachments/assets/2185bde3-f02c-496a-948c-bebb371daf93" />
+
+## Paso 2: Importar archivo CSV
+
+Seleccionamos la opción **“Import Data”** para importar el archivo:
+
+`denue_inegi_.csv`
+
+Este archivo fue brindado por el docente.
+<img width="960" height="503" alt="Captura de pantalla 2026-03-10 172337" src="https://github.com/user-attachments/assets/e5f4d624-f64e-465d-80ed-b65a540cbcfd" />
+
+## Paso 3: Iniciar el asistente de importación
+
+Aparece en pantalla la ventana **“Importar desde archivo CSV”**, donde damos clic en **“Siguiente”**.
+<img width="960" height="503" alt="Captura de pantalla 2026-03-10 172420" src="https://github.com/user-attachments/assets/dc348b56-af64-452e-9f4a-0574e28c288a" />
+
+## Paso 4: Buscar el archivo en el ordenador
+
+Seleccionamos la opción **“Browse”** para navegar en los documentos de nuestro ordenador.
+<img width="960" height="503" alt="Captura de pantalla 2026-03-10 172438" src="https://github.com/user-attachments/assets/b176d602-78e7-461c-b453-3094647fcb3e" />
+
+## Paso 5: Seleccionar el archivo
+
+Elegimos el archivo **CSV** correspondiente y damos clic en **“Abrir”**.
+<img width="960" height="503" alt="Captura de pantalla 2026-03-10 172500" src="https://github.com/user-attachments/assets/1619428d-cb34-43cb-a559-765c78eb92f6" />
+
+## Paso 6: Continuar con la importación
+
+Damos clic en **“Siguiente”** para avanzar a la siguiente pestaña.
+<img width="960" height="503" alt="Captura de pantalla 2026-03-10 172525" src="https://github.com/user-attachments/assets/7f139f12-167d-40c5-833f-fffe90b62732" />
+
+## Paso 7: Confirmar configuración
+
+Nuevamente presionamos **“Siguiente”** para continuar con el proceso.
+<img width="960" height="503" alt="Captura de pantalla 2026-03-10 172553" src="https://github.com/user-attachments/assets/06aabf09-38d3-4285-9676-90c27ef6ac40" />
+
+## Paso 8: Ajustar opciones de importación
+
+En nuestro caso seleccionamos las opciones:
+
+- **Truncate target table(s) before load**
+- **Disable batches**
+
+Estas opciones se activaron debido a algunos errores que aparecieron más adelante durante la importación.
+
+Después presionamos **“Siguiente”**.
+<img width="960" height="503" alt="Captura de pantalla 2026-03-10 172751" src="https://github.com/user-attachments/assets/71e5755a-6316-4ba0-a972-bece331bd0cd" />
+
+## Paso 9: Iniciar importación
+
+Seleccionamos **“Continuar”** para comenzar el proceso de importación del archivo CSV.
+<img width="960" height="503" alt="Captura de pantalla 2026-03-10 172855" src="https://github.com/user-attachments/assets/00e42eab-1811-4220-9786-f138d3f5b60d" />
+
+## Paso 10: Proceso de carga
+
+En pantalla aparece una **barra de progreso** mostrando el avance de la importación.  
+Este proceso puede tardar aproximadamente **2 a 3 minutos**, dependiendo del tamaño del archivo.
+<img width="960" height="503" alt="Captura de pantalla 2026-03-10 172214" src="https://github.com/user-attachments/assets/fe81ba4f-c269-47f2-b98a-81b1acced5a8" />
+
+## Paso 11: Manejo de errores durante la importación
+
+Durante la carga pueden aparecer errores como los mencionados en el **Paso 8**.
+
+En estos casos se puede:
+
+- Presionar **“Parar”** para detener el proceso.
+- Presionar **“Skip all”** para continuar y revisar cuántos registros se han importado.
+<img width="960" height="503" alt="Captura de pantalla 2026-03-10 173454" src="https://github.com/user-attachments/assets/c87b5725-f9a0-42e0-ad78-bd9afbbfdebe" />
+
+Posteriormente repetimos el proceso desde el **Paso 2** hasta lograr que todos los datos del archivo CSV se importen correctamente.
+
+## 📌 Paso 12: Corrección de errores en columnas
+
+Para corregir los errores mencionados en el paso anterior, modificamos el tamaño del **VARCHAR** en algunas columnas de la tabla:
+
+- `nom_estab`
+- `nom_v_e_1`
+- `nomb_asent`
+- `raz_social`
+- `nom_vial`
+- `nom_v_e_2`
+- `nom_v_e_3`
+- `nom_CenCom`
+- `correoelec`
+
+Para hacerlo, damos **doble clic en la opción VARCHAR de la columna** y modificamos el número de caracteres permitidos.
+<img width="960" height="503" alt="Captura de pantalla 2026-03-10 172823" src="https://github.com/user-attachments/assets/358b61f3-1fe7-49c5-9e14-6bcb48807445" />
+
+## Paso 13: Abrir el Editor SQL
+
+Después, en el menú de **DBeaver** ubicado en la parte superior, seleccionamos la opción:
+
+**Editor SQL**
+
+Esto nos permite ejecutar consultas sobre nuestra base de datos.
+<img width="295" height="486" alt="Captura de pantalla 2026-03-10 180759" src="https://github.com/user-attachments/assets/d17b48fd-6858-48ba-84a1-33f9128205a1" />
+
+## Paso 14: Consulta para verificar los registros
+
+Finalmente ejecutamos la siguiente consulta SQL para contar cuántos registros (filas) existen en la tabla `denue_inegi`:
+
+```sql
+SELECT COUNT(*) FROM denue_inegi di;
+```
+<img width="960" height="503" alt="Captura de pantalla 2026-03-10 181002" src="https://github.com/user-attachments/assets/9149230e-828f-4f16-b481-f2faf737a0af" />
