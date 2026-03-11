@@ -370,7 +370,7 @@ En estos casos se puede:
 
 Posteriormente repetimos el proceso desde el **Paso 2** hasta lograr que todos los datos del archivo CSV se importen correctamente.
 
-## 📌 Paso 12: Corrección de errores en columnas
+## Paso 12: Corrección de errores en columnas
 
 Para corregir los errores mencionados en el paso anterior, modificamos el tamaño del **VARCHAR** en algunas columnas de la tabla:
 
@@ -394,6 +394,7 @@ Después, en el menú de **DBeaver** ubicado en la parte superior, seleccionamos
 **Editor SQL**
 
 Esto nos permite ejecutar consultas sobre nuestra base de datos.
+
 <img width="295" height="486" alt="Captura de pantalla 2026-03-10 180759" src="https://github.com/user-attachments/assets/d17b48fd-6858-48ba-84a1-33f9128205a1" />
 
 ## Paso 14: Consulta para verificar los registros
