@@ -354,7 +354,8 @@ Seleccionamos **“Continuar”** para comenzar el proceso de importación del a
 
 ## Paso 10: Proceso de carga
 
-En pantalla aparece una **barra de progreso** mostrando el avance de la importación.  
+En pantalla aparece una **barra de progreso** mostrando el avance de la importación. 
+
 Este proceso puede tardar aproximadamente **2 a 3 minutos**, dependiendo del tamaño del archivo.
 <img width="960" height="503" alt="Captura de pantalla 2026-03-10 172214" src="https://github.com/user-attachments/assets/fe81ba4f-c269-47f2-b98a-81b1acced5a8" />
 
@@ -389,9 +390,7 @@ Para hacerlo, damos **doble clic en la opción VARCHAR de la columna** y modific
 
 ## Paso 13: Abrir el Editor SQL
 
-Después, en el menú de **DBeaver** ubicado en la parte superior, seleccionamos la opción:
-
-**Editor SQL**
+Después, en el menú de **DBeaver** ubicado en la parte superior, seleccionamos la opción: `Editor SQL`
 
 Esto nos permite ejecutar consultas sobre nuestra base de datos.
 
