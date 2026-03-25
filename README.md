@@ -2,7 +2,7 @@
 - Jaaziel Arellano Romero
 - Angela Guadalupe Martínez Rivera
 
-# Práctica 1
+# Práctica #1
 
 ## Propósito de la práctica
 
@@ -62,7 +62,7 @@ Finalmente, verificamos los cambios realizados accediendo a la página de bienve
 <img width="960" height="503" alt="Captura de pantalla 2026-03-02 133159" src="https://github.com/user-attachments/assets/d8c9a1fa-ff04-4dae-b7c9-52c28ebb47b6" />
 
 
-# Práctica 2
+# Práctica #2
 
 ## Propósito de la práctica
 
@@ -138,7 +138,7 @@ Si todo está correcto, se mostrará la página web.
 **Resultado:**  
 <img width="960" height="503" alt="Captura de pantalla 2026-03-02 132004" src="https://github.com/user-attachments/assets/3da87104-2586-4d76-947e-2dbf69086685" />
 
-# Práctica 3
+# Práctica #3
 
 ## Paso 1: Crear contenedor MySQL en Docker
 
@@ -297,7 +297,7 @@ Aviso de errores con Docker-Desktop:
 Los últimos 2 pasos no funcionarán correctamente por lo estrechamente implantado que está nginx en la distribución de ubuntu, cuando corres “service nginx stop” se cierra todo el contenedor con la consola, lo que no permite abrir paso a que la página de streamlight pueda proyectarse en el puerto 80 del navegador (que está siempre siendo usado por nginx), y arreglarlo requiere de configurar y editar código fuente de la distribución, cosa que no recomendamos por lo complicado y crítico que puede resultar para la terminal; por lo que si utilizas este programa terminará viéndose algo así:
 ![image.png](https://raw.githubusercontent.com/bucketio/img1/main/2026/03/10/1773176283654-05158509-5b87-4f69-97ad-5bc1897646ec.png 'image.png')
 
-# Práctica 5
+# Práctica #5
 ## Paso 1: Crear base de datos
 
 En **DBeaver** creamos una nueva base de datos llamada:
