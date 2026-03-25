@@ -291,7 +291,7 @@ Si todo sale bien deberías seguir dentro de la carpeta donde creamos el entorno
 
     streamlit run nombre-de-tu-proyecto.py
 
-### Ahora con escribir el localhost en tu navegador, y podrás ver tu página streamlit.
+### Ahora con escribir el localhost en tu navegador y podrás ver tu página streamlit.
 
 Aviso de errores con Docker-Desktop:
 Los últimos 2 pasos no funcionarán correctamente por lo estrechamente implantado que está nginx en la distribución de ubuntu, cuando corres “service nginx stop” se cierra todo el contenedor con la consola, lo que no permite abrir paso a que la página de streamlight pueda proyectarse en el puerto 80 del navegador (que está siempre siendo usado por nginx), y arreglarlo requiere de configurar y editar código fuente de la distribución, cosa que no recomendamos por lo complicado y crítico que puede resultar para la terminal; por lo que si utilizas este programa terminará viéndose algo así:
