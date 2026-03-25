@@ -1,3 +1,7 @@
+# Integrantes
+- Jaaziel Arellano Romero
+- Angela Guadalupe Martínez Rivera
+
 # Práctica 1
 
 ## Propósito de la práctica
