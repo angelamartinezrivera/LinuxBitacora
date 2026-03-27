@@ -476,7 +476,7 @@ De manera que el código completo de la instrucción automatizada queda de la si
 Este último bloque de código deberá pegarse en el archivo que acabamos de abrir con nano, deberá verse de la siguiente forma: 
 ![image.png](https://raw.githubusercontent.com/bucketio/img9/main/2026/03/26/1774594599923-a7aa455c-20cd-4f5b-af18-590a05ede5c1.png 'image.png')
 (Observación, utilizamos "* * * * *" para que hiciera respaldos cada minuto y tener resultados lo mas rápido posible, recomendamos consultar la documentación de Crontab Guru para entender como adaptar esa sentencia a sus necesidades)
-- **4- Finalmente** una vez pegamos la instrucción completa en el archivo, **lo guardamos y cerramos** con: 
+- **4. Finalmente** una vez pegamos la instrucción completa en el archivo, **lo guardamos y cerramos** con: 
   - 1.`Contr` + `O`
   - 2.``Enter``
   - 3.``Control`` + `X`
