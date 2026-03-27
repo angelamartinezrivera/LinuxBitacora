@@ -407,20 +407,20 @@ SELECT COUNT(*) FROM denue_inegi di;
 <img width="960" height="503" alt="Captura de pantalla 2026-03-10 181002" src="https://github.com/user-attachments/assets/9149230e-828f-4f16-b481-f2faf737a0af" />
 
 # Práctica #6
-El propósito de ésta práctica es poder automatizar respaldos de una base de datos montada en nuestro computador y potencialmente cualquier base de datos que manejes solo con la dirección IP.
+El propósito de esta práctica es poder automatizar respaldos de una base de datos montada en nuestro computador y potencialmente cualquier base de datos que manejes solo con la dirección IP.
 
-##### Ésta práctica en cuestión requiere:
-1. montar una pequeña base de datos en tu computador y conectarla a tu gestor de bases de datos favoritos
-2. contar también con una consola linux ajena a dicha conexión.
+##### Esta práctica en cuestión requiere:
+1. Montar una pequeña base de datos en tu computador y conectarla a tu gestor de bases de datos favorito.
+2. Contar también con una consola Linux ajena a dicha conexión.
 
-Cosas que ya hizimos es practicas anteriores, por lo que, se asume que <u>las prácticas 1, 3 y 5</u> han sido completadas.
+Cosas que ya hicimos en practicas anteriores, por lo que se asume que <u>las prácticas 1, 3 y 5</u> han sido completadas.
 
 ### Instalar herramientas necesarias:
-Iniciamos primero en nuestra consola linux.
+Iniciamos primero en nuestra consola Linux.
 
 ### Nano:
-Es un<u> editor de texto</u> basado en la terminal que se encuentra disponible en la mayoría de distribuciones de Linux y Unix. 
-A diferencia de editores más complejos como Vim o Emacs, Nano no tiene modos de operación; esto significa que **puedes comenzar a escribir y editar texto inmediatamente al abrir un archivo.**
+Es un <u>editor de texto</u> basado en la terminal que se encuentra disponible en la mayoría de distribuciones de Linux y Unix. 
+A diferencia de editores más complejos como Vim o Emacs, Nano no tiene modos de operación, esto significa que **puedes comenzar a escribir y editar texto inmediatamente al abrir un archivo.**
 - Lo instalamos con el siguiente comando: `apt install nano`
 
 ### MYSQLDUMP:
@@ -435,10 +435,9 @@ Ofrece un generador de horarios y ejemplos de expresiones de programación de cr
 - Lo instalamos con el siguiente comando: `apt install cron`
 
 ## Pasamos a la base de datos:
-Dejamos la consola linux para <u>ir al gestor de bases de datos que estamos usando</u>; esto por que **necesitamos crear un usuario nuevo** y asignarle permisos **de acceso remoto** para que pueda <u>descargar los respaldos desde ótro computador</u> (consola linux).
+Dejamos la consola Linux para <u>ir al gestor de bases de datos que estamos usando</u>, esto por que **necesitamos crear un usuario nuevo** y asignarle permisos **de acceso remoto** para que pueda <u>descargar los respaldos desde ótro computador</u> (consola linux).
 
 Una vez en la base de datos <u>nos ubicamos en un nuevo script de consulta SQL</u> y corremos los siguientes comandos **uno por uno**:
-
 
 ```language
 CREATE USER 'Tu_Nuevo_Usuario'@'%' IDENTIFIED BY 'Tu-DataBase_password';
@@ -447,40 +446,40 @@ GRANT ALL PRIVILEGES ON Name_DataBase.* TO 'Tu_Nuevo_Usuario';
 
 GRANT PROCESS ON *.* TO 'Tu_Nuevo_Usuario';
 ```
-## Volvemos a la Consola de Linux: 
+## Volvemos a la consola de Linux: 
  
-- Primero debemos ubicarnos en una carpeta facil de recordar, como con el comando `cd /home`.
+- Primero debemos ubicarnos en una carpeta fácil de recordar, como con el comando `cd /home`.
 
 Luego seguimos con una <u>instrucción de prueba</u> para asegurarnos que las herramientas que instalamos funcionan en conjunto, correrás el siguiente código:
 ```language
 mysqldump -h IP_de_tu_computador -u Tu_Nuevo_Usuario -p'DataBase_Password' DataBase_name > /home/respaldo_$(date +\%Y\%m\%d_\%H\%M).sql
 ```
-Seguido de el comando `ll` para asegurarnos de que efectivamente hizo un respaldo y dícho respaldo nó está vacio, se debería ver similar a la imagen a continuación:
+Seguido de el comando `ll` para asegurarnos de que efectivamente hizo un respaldo y dicho respaldo no está vacío, se debería ver similar a la imagen a continuación:
 
 ![image.png](https://raw.githubusercontent.com/bucketio/img17/main/2026/03/26/1774587977996-f68632c2-d0d8-435d-b4c0-edbbb9df2f8f.png 'image.png')
-La instrucción de prueba ya utiliza la herramienta nativa de linux "date" para concatenar parametros actuales (**fecha y hora**) al nombre del archivo donde se guarda el respaldo para reconocer diferenciar entre respaldos repetidos por su fecha de creación.
+La instrucción de prueba ya utiliza la herramienta nativa de Linux "date" para concatenar parametros actuales (**fecha y hora**) al nombre del archivo donde se guarda el respaldo para reconocer diferenciar entre respaldos repetidos por su fecha de creación.
 
-## Etapa final - Automatizar la Instrucción -
-Para poder automatizar la instrucción que sabemos que funciona debemos no basta con escribir un solo comando, se se trata<u> hacer uso de la herramienta **crontab**</u>, y ése proceso se divide en un par de pasos que explicaremos a continuación:
+## Etapa final - Automatizar la instrucción -
+Para poder automatizar la instrucción que sabemos que funciona no basta con escribir un solo comando, se trata <u>hacer uso de la herramienta **crontab**</u>, y ese proceso se divide en un par de pasos que explicaremos a continuación:
 1. 1-**Activamos el "sistema" de automatización de Crontrab**, como lo acabamos de instalar, **es necesario activarlo** la primera vez que lo usemos, eso es sencillo, solo con correr el comando `service cron start` en consola.
-2. 2- **Accedemos al archivo de crontab**; es estrictamente necesario correr el comando `crontab -e`, el comando abre un archivo a travez de nano, y se deberá ver de la siguiente manera:
+2. 2- **Accedemos al archivo de crontab**, es estrictamente necesario correr el comando `crontab -e`, el comando abre un archivo a través de nano, y se deberá ver de la siguiente manera:
 ![image.png](https://raw.githubusercontent.com/bucketio/img14/main/2026/03/26/1774590152876-cbb741d4-f298-4fba-8161-761dbdc08889.png 'image.png')
-3. 3- **Editamos el archivo**; si <u>bajamos hasta la última línea</u> y escribimos cualquier cosa <u>sin los gatos</u> (#) el sistema lo tomará como una <u>instrucción/sentencia que debe ser repetida</u> determinadas veces al día.
+3. 3- **Editamos el archivo**, si <u>bajamos hasta la última línea</u> y escribimos cualquier cosa<u> sin los gatos</u> (#) el sistema lo tomará como una <u>instrucción/sentencia que debe ser repetida</u> determinadas veces al día.
 Sin embargo nuestra instrucción anterior no está completa para poder ser automatizada, debemos establecer la **frecuencia de repetición** y establecer un límite de respaldos dentro de la carpeta para evitar errores.
-`* 3 * * *`: delimita el periodo, en éste bloque dice que el proceso se ejecutará la primera tercer hora de cada día de cada semana de cada mes y de cada año.
-`/usr/bin/find /home/ -name "respaldo_*.sql" -type f -mtime +7 -delete`: éste bloque establece un sistema donde cada vez que se ejecute el la instrucción se analizará si es el el nombre del archivo, la fecha supera mas de 7 días a la fecha actual, de superarlos, se borran para evitar superar mas antiguas a una semana.
+`* 3 * * *`: delimita el periodo, en este bloque dice que el proceso se ejecutará la primera tercer hora de cada día de cada semana de cada mes y de cada año.
+`/usr/bin/find /home/ -name "respaldo_*.sql" -type f -mtime +7 -delete`: este bloque establece un sistema donde cada vez que se ejecute la instrucción se analizará si es el nombre del archivo, la fecha supera mas de 7 días a la fecha actual, de superarlos, se borran para evitar superar más antiguas a una semana.
 De manera que el código completo de la instrucción automatizada queda de la siguiente forma: 
 
 ```language
 * * * * * /usr/bin/mysqldump -h 192.168.100.54 -u Tu_Nuevo_Usuario -p'vegeta777' borrame > /home/respaldo_$(date +\%Y\%m\%d_\%H\%M).sql 2> /home/error_log.txt; /usr/bin/find /home/ -name "respaldo_*.sql" -type f -mtime +7 -delete
 ```
-Este ultimo bloque de código deberá pegarse en el archivo que acabamos de abrir con nano, deberá verse de la siguiente forma: 
+Este último bloque de código deberá pegarse en el archivo que acabamos de abrir con nano, deberá verse de la siguiente forma: 
 ![image.png](https://raw.githubusercontent.com/bucketio/img9/main/2026/03/26/1774594599923-a7aa455c-20cd-4f5b-af18-590a05ede5c1.png 'image.png')
-(Observación, utilizamos "* * * * *" para que hiziera respaldos cada minuto y tener resultados lo mas rapido posible, recomendamos consultar la documentación de crontab guru para entender como adaptar ésa sentencia a sus necesidades)
+(Observación, utilizamos "* * * * *" para que hiciera respaldos cada minuto y tener resultados lo mas rápido posible, recomendamos consultar la documentación de Crontab Guru para entender como adaptar esa sentencia a sus necesidades)
 - **4- Finalmente** una vez pegamos la instrucción completa en el archivo, **lo guardamos y cerramos** con: 
   - 1.`Contr` + `O`
   - 2.``Enter``
   - 3.``Control`` + `X`
 El resultado final, eventualmente se debería reflejar una serie de respaldos consecutivos similar a los siguientes:
 ![image.png](https://raw.githubusercontent.com/bucketio/img8/main/2026/03/27/1774595394676-3c3004f0-64b4-48b1-8564-924b49540db6.png 'image.png')
-(Comentario Extra: si necesitas detener el sistema automatico, solo basta con escribir un gato antes de la isntrucción para convertirlo en un comentario imposibilitando su ejecución.)
+(Comentario extra: si necesitas detener el sistema automático, solo basta con escribir un gato antes de la instrucción para convertirlo en un comentario, imposibilitando su ejecución.)
