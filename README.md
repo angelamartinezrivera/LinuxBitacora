@@ -461,10 +461,10 @@ La instrucción de prueba ya utiliza la herramienta nativa de Linux "date" para 
 
 ## Etapa final - Automatizar la instrucción -
 Para poder automatizar la instrucción que sabemos que funciona no basta con escribir un solo comando, se trata <u>hacer uso de la herramienta **crontab**</u>, y ese proceso se divide en un par de pasos que explicaremos a continuación:
-1. 1-**Activamos el "sistema" de automatización de Crontrab**, como lo acabamos de instalar, **es necesario activarlo** la primera vez que lo usemos, eso es sencillo, solo con correr el comando `service cron start` en consola.
-2. 2- **Accedemos al archivo de crontab**, es estrictamente necesario correr el comando `crontab -e`, el comando abre un archivo a través de nano, y se deberá ver de la siguiente manera:
+1. **Activamos el "sistema" de automatización de Crontrab**, como lo acabamos de instalar, **es necesario activarlo** la primera vez que lo usemos, eso es sencillo, solo con correr el comando `service cron start` en consola.
+2. **Accedemos al archivo de crontab**, es estrictamente necesario correr el comando `crontab -e`, el comando abre un archivo a través de nano, y se deberá ver de la siguiente manera:
 ![image.png](https://raw.githubusercontent.com/bucketio/img14/main/2026/03/26/1774590152876-cbb741d4-f298-4fba-8161-761dbdc08889.png 'image.png')
-3. 3- **Editamos el archivo**, si <u>bajamos hasta la última línea</u> y escribimos cualquier cosa<u> sin los gatos</u> (#) el sistema lo tomará como una <u>instrucción/sentencia que debe ser repetida</u> determinadas veces al día.
+3. **Editamos el archivo**, si <u>bajamos hasta la última línea</u> y escribimos cualquier cosa<u> sin los gatos</u> (#) el sistema lo tomará como una <u>instrucción/sentencia que debe ser repetida</u> determinadas veces al día.
 Sin embargo nuestra instrucción anterior no está completa para poder ser automatizada, debemos establecer la **frecuencia de repetición** y establecer un límite de respaldos dentro de la carpeta para evitar errores.
 `* 3 * * *`: delimita el periodo, en este bloque dice que el proceso se ejecutará la primera tercer hora de cada día de cada semana de cada mes y de cada año.
 `/usr/bin/find /home/ -name "respaldo_*.sql" -type f -mtime +7 -delete`: este bloque establece un sistema donde cada vez que se ejecute la instrucción se analizará si es el nombre del archivo, la fecha supera mas de 7 días a la fecha actual, de superarlos, se borran para evitar superar más antiguas a una semana.
