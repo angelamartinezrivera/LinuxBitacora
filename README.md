@@ -327,19 +327,14 @@ Seleccionamos la opción **“Browse”** para navegar en los documentos de nues
 ## Paso 5: Seleccionar el archivo
 
 Elegimos el archivo **CSV** correspondiente y damos clic en **“Abrir”**.
-<img width="960" height="503" alt="Captura de pantalla 2026-03-10 172500" src="https://github.com/user-attachments/assets/1619428d-cb34-43cb-a559-765c78eb92f6" />
-
-## Paso 6: Continuar con la importación
-
-Damos clic en **“Siguiente”** para avanzar a la siguiente pestaña.
 <img width="960" height="503" alt="Captura de pantalla 2026-03-10 172525" src="https://github.com/user-attachments/assets/7f139f12-167d-40c5-833f-fffe90b62732" />
 
-## Paso 7: Confirmar configuración
+## Paso 6: Confirmar configuración
 
 Nuevamente presionamos **“Siguiente”** para continuar con el proceso.
 <img width="960" height="503" alt="Captura de pantalla 2026-03-10 172553" src="https://github.com/user-attachments/assets/06aabf09-38d3-4285-9676-90c27ef6ac40" />
 
-## Paso 8: Ajustar opciones de importación
+## Paso 7: Ajustar opciones de importación
 
 En nuestro caso seleccionamos las opciones:
 
@@ -351,19 +346,19 @@ Estas opciones se activaron debido a algunos errores que aparecieron más adelan
 Después presionamos **“Siguiente”**.
 <img width="960" height="503" alt="Captura de pantalla 2026-03-10 172751" src="https://github.com/user-attachments/assets/71e5755a-6316-4ba0-a972-bece331bd0cd" />
 
-## Paso 9: Iniciar importación
+## Paso 8: Iniciar importación
 
 Seleccionamos **“Continuar”** para comenzar el proceso de importación del archivo CSV.
 <img width="960" height="503" alt="Captura de pantalla 2026-03-10 172855" src="https://github.com/user-attachments/assets/00e42eab-1811-4220-9786-f138d3f5b60d" />
 
-## Paso 10: Proceso de carga
+## Paso 9: Proceso de carga
 
 En pantalla aparece una **barra de progreso** mostrando el avance de la importación. 
 
 Este proceso puede tardar aproximadamente **2 a 3 minutos**, dependiendo del tamaño del archivo.
 <img width="960" height="503" alt="Captura de pantalla 2026-03-10 172214" src="https://github.com/user-attachments/assets/fe81ba4f-c269-47f2-b98a-81b1acced5a8" />
 
-## Paso 11: Manejo de errores durante la importación
+## Paso 10: Manejo de errores durante la importación
 
 Durante la carga pueden aparecer errores como los mencionados en el **Paso 8**.
 
@@ -375,7 +370,7 @@ En estos casos se puede:
 
 Posteriormente repetimos el proceso desde el **Paso 2** hasta lograr que todos los datos del archivo CSV se importen correctamente.
 
-## Paso 12: Corrección de errores en columnas
+## Paso 11: Corrección de errores en columnas
 
 Para corregir los errores mencionados en el paso anterior, modificamos el tamaño del **VARCHAR** en algunas columnas de la tabla:
 
@@ -392,7 +387,7 @@ Para corregir los errores mencionados en el paso anterior, modificamos el tamañ
 Para hacerlo, damos **doble clic en la opción VARCHAR de la columna** y modificamos el número de caracteres permitidos.
 <img width="960" height="503" alt="Captura de pantalla 2026-03-10 172823" src="https://github.com/user-attachments/assets/358b61f3-1fe7-49c5-9e14-6bcb48807445" />
 
-## Paso 13: Abrir el Editor SQL
+## Paso 12: Abrir el Editor SQL
 
 Después, en el menú de **DBeaver** ubicado en la parte superior, seleccionamos la opción: `Editor SQL`
 
@@ -400,7 +395,7 @@ Esto nos permite ejecutar consultas sobre nuestra base de datos.
 
 <img width="295" height="486" alt="Captura de pantalla 2026-03-10 180759" src="https://github.com/user-attachments/assets/d17b48fd-6858-48ba-84a1-33f9128205a1" />
 
-## Paso 14: Consulta para verificar los registros
+## Paso 13: Consulta para verificar los registros
 
 Finalmente ejecutamos la siguiente consulta SQL para contar cuántos registros (filas) existen en la tabla `denue_inegi`:
 
