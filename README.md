@@ -465,9 +465,11 @@ Para poder automatizar la instrucción que sabemos que funciona no basta con esc
 2. **Accedemos al archivo de crontab**, es estrictamente necesario correr el comando `crontab -e`, el comando abre un archivo a través de nano, y se deberá ver de la siguiente manera:
 ![image.png](https://raw.githubusercontent.com/bucketio/img14/main/2026/03/26/1774590152876-cbb741d4-f298-4fba-8161-761dbdc08889.png 'image.png')
 3. **Editamos el archivo**, si <u>bajamos hasta la última línea</u> y escribimos cualquier cosa<u> sin los gatos</u> (#) el sistema lo tomará como una <u>instrucción/sentencia que debe ser repetida</u> determinadas veces al día.
+   
 Sin embargo nuestra instrucción anterior no está completa para poder ser automatizada, debemos establecer la **frecuencia de repetición** y establecer un límite de respaldos dentro de la carpeta para evitar errores.
 `* 3 * * *`: delimita el periodo, en este bloque dice que el proceso se ejecutará la primera tercer hora de cada día de cada semana de cada mes y de cada año.
 `/usr/bin/find /home/ -name "respaldo_*.sql" -type f -mtime +7 -delete`: este bloque establece un sistema donde cada vez que se ejecute la instrucción se analizará si es el nombre del archivo, la fecha supera mas de 7 días a la fecha actual, de superarlos, se borran para evitar superar más antiguas a una semana.
+
 De manera que el código completo de la instrucción automatizada queda de la siguiente forma: 
 
 ```language
@@ -476,10 +478,12 @@ De manera que el código completo de la instrucción automatizada queda de la si
 Este último bloque de código deberá pegarse en el archivo que acabamos de abrir con nano, deberá verse de la siguiente forma: 
 ![image.png](https://raw.githubusercontent.com/bucketio/img9/main/2026/03/26/1774594599923-a7aa455c-20cd-4f5b-af18-590a05ede5c1.png 'image.png')
 (Observación, utilizamos "* * * * *" para que hiciera respaldos cada minuto y tener resultados lo mas rápido posible, recomendamos consultar la documentación de Crontab Guru para entender como adaptar esa sentencia a sus necesidades)
-- **4. Finalmente** una vez pegamos la instrucción completa en el archivo, **lo guardamos y cerramos** con: 
+
+**4. Finalmente** una vez pegamos la instrucción completa en el archivo, **lo guardamos y cerramos** con: 
   - 1.`Contr` + `O`
   - 2.``Enter``
   - 3.``Control`` + `X`
+    
 El resultado final, eventualmente se debería reflejar una serie de respaldos consecutivos similar a los siguientes:
 ![image.png](https://raw.githubusercontent.com/bucketio/img8/main/2026/03/27/1774595394676-3c3004f0-64b4-48b1-8564-924b49540db6.png 'image.png')
 (Comentario extra: si necesitas detener el sistema automático, solo basta con escribir un gato antes de la instrucción para convertirlo en un comentario, imposibilitando su ejecución.)
