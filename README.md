@@ -487,3 +487,170 @@ Este último bloque de código deberá pegarse en el archivo que acabamos de abr
 El resultado final, eventualmente se debería reflejar una serie de respaldos consecutivos similar a los siguientes:
 ![image.png](https://raw.githubusercontent.com/bucketio/img8/main/2026/03/27/1774595394676-3c3004f0-64b4-48b1-8564-924b49540db6.png 'image.png')
 (Comentario extra: si necesitas detener el sistema automático, solo basta con escribir un gato antes de la instrucción para convertirlo en un comentario, imposibilitando su ejecución.)
+
+# Práctica #7
+# Justificación de las acciones tomadas
+
+En esta sección se describen las decisiones tomadas sobre las columnas del Excel INEGI_DENUE, indicando cuáles se conservaron y cuáles se eliminaron, junto con su respectiva justificación.
+
+---
+
+## Columnas conservadas
+
+- **`id`**  
+  Se conserva para identificar cada negocio de manera única. Además, se verificó que no existieran datos duplicados.
+
+- **`nom_estab`**  
+  Se mantiene porque representa el nombre del establecimiento.
+
+- **`raz_social`**  
+  Se conserva ya que corresponde al nombre legal de la empresa.
+
+---
+
+## 1er Diccionario
+
+- **`codigo_act`**  
+  Se conserva porque representa el código de la actividad.
+
+- **`nombre_act`**  
+  Se mantiene ya que describe la actividad del establecimiento y está relacionada con `codigo_act`.
+
+---
+
+## Columna eliminada
+
+- **`per_ocu`**  
+  Se eliminó debido a que los datos no tienen relevancia ni congruencia porque no dice exactamente cúantas personas trabajan en el establecimiento.
+
+---
+
+## 2do Diccionario
+
+- **`tipo_vial`**  
+  Se conserva porque indica el tipo de vialidad (calle, avenida, etc.).
+
+- **`nom_vial`**  
+  Se mantiene porque representa el nombre de la vialidad.
+
+---
+
+## Columnas eliminadas (datos repetidos o nulos)
+
+Se eliminaron por contener datos repetidos, nulos o irrelevantes:
+
+- `tipo_v_e_1`
+- `nom_v_e_1`
+- `tipo_v_e_2`
+- `nom_v_e_2`
+- `tipo_v_e_3`
+- `nom_v_e_3`
+
+---
+
+## Columnas eliminadas (datos irrelevantes o nulos)
+
+Se eliminaron porque contienen muchos valores nulos o datos sin utilidad:
+
+- `numero_ext`
+- `letra_ext`
+- `edificio`
+- `edificio_e`
+- `numero_int`
+- `letra_int`
+
+---
+
+## 3er Diccionario
+
+- **`tipo_asent`**  
+  Se conserva porque indica el tipo de asentamiento (colonia, fraccionamiento, etc.).
+
+- **`nomb_asent`**  
+  Se mantiene porque indica el nombre del asentamiento.
+
+---
+
+## Columnas eliminadas
+
+Se eliminaron por falta de relevancia y presencia de datos nulos:
+
+- `tipoCenCom`
+- `nom_CenCom`
+- `num_local`
+
+---
+
+## Otras decisiones sobre columnas
+
+- **`cod_postal`**  
+  Se conserva por ser un dato importante de ubicación.
+
+- **`cve_ent`**  
+  Se elimina por contener muchos valores nulos.
+
+- **`entidad`**  
+  Se mantiene ya que indica la ubicación del establecimiento.
+
+- **`cve_mun`**  
+  Se elimina porque es redundante con `municipio`.
+
+- **`municipio`**  
+  Se conserva por su relevancia geográfica en relación con el establecimiento.
+
+- **`cve_loc`**  
+  Se elimina por ser redundante con `localidad`.
+
+- **`localidad`**  
+  Se mantiene porque aporta información útil sobre la ubicación del establecimiento.
+
+- **`ageb`**  
+  Se elimina por desconocimiento de su utilidad y falta de relevancia.
+
+- **`manzana`**  
+  Se elimina por no ser un dato relevante y no muy común.
+
+- **`telefono`**  
+  Se conserva por ser un dato importante de contacto.
+
+---
+
+## Columnas conservadas por recomendación
+
+Aunque presentan muchos valores nulos, se conservaron por recomendación del docente:
+
+- `correoelec`
+- `www`
+
+Se consideran útiles a futuro si se actualizan los datos.
+
+---
+
+## Columnas eliminadas por baja utilidad
+
+- **`tipoUniEco`**  
+  Se elimina porque no aporta información relevante.
+
+---
+
+## Columnas en análisis
+
+Las siguientes columnas se conservaron temporalmente para evaluar su utilidad:
+
+- `latitud`
+- `longitud`
+
+Se analizará cómo utilizarlas en SQL y si aportan valor al análisis.
+
+---
+
+## Columna final
+
+- **`fecha_alta`**  
+  Se conserva porque indica cuándo se registró el establecimiento, lo cual aporta información relevante para análisis temporal.
+
+---
+
+## Conclusión
+
+Se realizó una depuración del Excel INEGI_DENUE eliminando columnas redundantes, irrelevantes o con demasiados valores nulos, y conservando aquellas que aportan valor para el análisis. Además, se estructuraron diccionarios de datos para mejorar la organización y comprensión de la información.
