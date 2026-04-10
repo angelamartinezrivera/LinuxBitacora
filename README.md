@@ -653,4 +653,4 @@ Se analizará cómo utilizarlas en SQL y si aportan valor al análisis.
 
 ## Conclusión
 
-Se realizó una depuración del Excel INEGI_DENUE eliminando columnas redundantes, irrelevantes o con demasiados valores nulos, y conservando aquellas que aportan valor para el análisis. Además, se estructuraron diccionarios de datos para mejorar la organización y comprensión de la información.
+Se realizó una depuración del Excel INEGI_DENUE (normalizado con enfoque para un analista) eliminando columnas redundantes, irrelevantes o con demasiados valores nulos, y conservando aquellas que aportan valor para el análisis. Además, se estructuraron diccionarios de datos para mejorar la organización y comprensión de la información.
