@@ -629,7 +629,7 @@ Se consideran útiles a futuro si se actualizan los datos.
 ## Columnas eliminadas por baja utilidad
 
 - **`tipoUniEco`**  
-  Se elimina porque no aporta información relevante.
+  Se elimina porque no aporta información relevante ya que en su mayoría dice que los establecimientos están fijos.
 
 ---
 
