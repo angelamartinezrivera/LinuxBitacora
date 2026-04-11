@@ -627,7 +627,7 @@ Se analizará cómo utilizarlas en SQL y si aportan valor al análisis.
 
 Se realizó una depuración del Excel DENUE_INEGI (normalizado con enfoque para un analista) eliminando columnas redundantes, irrelevantes o con demasiados valores nulos, y conservando aquellas que aportan valor para el análisis. Además, se estructuraron diccionarios de datos para mejorar la organización y comprensión de la información.
 
-# Normalizando el Excel INEGI_DENUE en DBeaver
+# Normalizando el Excel DENUE_INEGI en DBeaver
 
 En la siguiente práctica se realizó la normalización del archivo **DENUE_INEGI** en DBeaver mediante la eliminación de columnas innecesarias, redundantes o con datos irrelevantes, utilizando sentencias SQL.
 
