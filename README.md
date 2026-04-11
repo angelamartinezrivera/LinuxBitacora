@@ -677,7 +677,32 @@ DROP COLUMN nombre_columna;
 
 ## Ejecución continua
 
-Aplicamos este mismo proceso de forma consecutiva para eliminar todas las columnas que previamente se identificaron como innecesarias.
+Aplicamos este mismo proceso de forma consecutiva para eliminar todas las columnas que previamente se identificaron como innecesarias, utilizando el siguiente código:
+
+```sql
+ALTER TABLE denue_inegi
+DROP COLUMN tipo_v_e_1,
+DROP COLUMN nom_v_e_1,
+DROP COLUMN tipo_v_e_2,
+DROP COLUMN nom_v_e_2,
+DROP COLUMN tipo_v_e_3,
+DROP COLUMN nom_v_e_3,
+DROP COLUMN numero_ext,
+DROP COLUMN letra_ext,
+DROP COLUMN edificio,
+DROP COLUMN edificio_e,
+DROP COLUMN numero_int,
+DROP COLUMN letra_int,
+DROP COLUMN tipoCenCom,
+DROP COLUMN nom_CenCom,
+DROP COLUMN num_local,
+DROP COLUMN cve_ent,
+DROP COLUMN cve_mun,
+DROP COLUMN cve_loc,
+DROP COLUMN ageb,
+DROP COLUMN manzana,
+DROP COLUMN tipoUniEco;
+```
 
 **Evidencia:**  
 <img width="960" height="503" alt="Captura de pantalla 2026-04-11 134507" src="https://github.com/user-attachments/assets/ce8609d2-d4bb-4bcc-b2d2-25e0a3814608" />
