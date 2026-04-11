@@ -491,9 +491,7 @@ El resultado final, eventualmente se debería reflejar una serie de respaldos co
 # Práctica #7
 # Justificación de las acciones tomadas
 
-En esta sección se describen las decisiones tomadas sobre las columnas del Excel INEGI_DENUE, indicando cuáles se conservaron y cuáles se eliminaron, junto con su respectiva justificación.
-
----
+En esta sección se describen las decisiones tomadas sobre las columnas del Excel DENUE_INEGI, indicando cuáles se conservaron y cuáles se eliminaron, junto con su respectiva justificación.
 
 ## Columnas conservadas
 
@@ -506,8 +504,6 @@ En esta sección se describen las decisiones tomadas sobre las columnas del Exce
 - **`raz_social`**  
   Se conserva ya que corresponde al nombre legal de la empresa.
 
----
-
 ## 1er Diccionario
 
 - **`codigo_act`**  
@@ -516,14 +512,10 @@ En esta sección se describen las decisiones tomadas sobre las columnas del Exce
 - **`nombre_act`**  
   Se mantiene ya que describe la actividad del establecimiento y está relacionada con `codigo_act`.
 
----
-
 ## Columna eliminada
 
 - **`per_ocu`**  
   Se eliminó debido a que los datos no tienen relevancia ni congruencia porque no dice exactamente cúantas personas trabajan en el establecimiento.
-
----
 
 ## 2do Diccionario
 
@@ -532,8 +524,6 @@ En esta sección se describen las decisiones tomadas sobre las columnas del Exce
 
 - **`nom_vial`**  
   Se mantiene porque representa el nombre de la vialidad.
-
----
 
 ## Columnas eliminadas (datos repetidos o nulos)
 
@@ -546,8 +536,6 @@ Se eliminaron por contener datos repetidos, nulos o irrelevantes:
 - `tipo_v_e_3`
 - `nom_v_e_3`
 
----
-
 ## Columnas eliminadas (datos irrelevantes o nulos)
 
 Se eliminaron porque contienen muchos valores nulos o datos sin utilidad:
@@ -559,8 +547,6 @@ Se eliminaron porque contienen muchos valores nulos o datos sin utilidad:
 - `numero_int`
 - `letra_int`
 
----
-
 ## 3er Diccionario
 
 - **`tipo_asent`**  
@@ -569,8 +555,6 @@ Se eliminaron porque contienen muchos valores nulos o datos sin utilidad:
 - **`nomb_asent`**  
   Se mantiene porque indica el nombre del asentamiento.
 
----
-
 ## Columnas eliminadas
 
 Se eliminaron por falta de relevancia y presencia de datos nulos:
@@ -578,8 +562,6 @@ Se eliminaron por falta de relevancia y presencia de datos nulos:
 - `tipoCenCom`
 - `nom_CenCom`
 - `num_local`
-
----
 
 ## Otras decisiones sobre columnas
 
@@ -613,8 +595,6 @@ Se eliminaron por falta de relevancia y presencia de datos nulos:
 - **`telefono`**  
   Se conserva por ser un dato importante de contacto.
 
----
-
 ## Columnas conservadas por recomendación
 
 Aunque presentan muchos valores nulos, se conservaron por recomendación del docente:
@@ -624,14 +604,10 @@ Aunque presentan muchos valores nulos, se conservaron por recomendación del doc
 
 Se consideran útiles a futuro si se actualizan los datos.
 
----
-
 ## Columnas eliminadas por baja utilidad
 
 - **`tipoUniEco`**  
   Se elimina porque no aporta información relevante ya que en su mayoría dice que los establecimientos están fijos.
-
----
 
 ## Columnas en análisis
 
@@ -642,15 +618,83 @@ Las siguientes columnas se conservaron temporalmente para evaluar su utilidad:
 
 Se analizará cómo utilizarlas en SQL y si aportan valor al análisis.
 
----
-
 ## Columna final
 
 - **`fecha_alta`**  
   Se conserva porque indica cuándo se registró el establecimiento, lo cual aporta información relevante para análisis temporal.
 
----
-
 ## Conclusión
 
-Se realizó una depuración del Excel INEGI_DENUE (normalizado con enfoque para un analista) eliminando columnas redundantes, irrelevantes o con demasiados valores nulos, y conservando aquellas que aportan valor para el análisis. Además, se estructuraron diccionarios de datos para mejorar la organización y comprensión de la información.
+Se realizó una depuración del Excel DENUE_INEGI (normalizado con enfoque para un analista) eliminando columnas redundantes, irrelevantes o con demasiados valores nulos, y conservando aquellas que aportan valor para el análisis. Además, se estructuraron diccionarios de datos para mejorar la organización y comprensión de la información.
+
+# Normalizando el Excel INEGI_DENUE en DBeaver
+
+En la siguiente práctica se realizó la normalización del archivo **DENUE_INEGI** en DBeaver mediante la eliminación de columnas innecesarias, redundantes o con datos irrelevantes, utilizando sentencias SQL.
+
+## Eliminación de columnas
+
+Para eliminar columnas de una tabla en SQL utilizamos la siguiente estructura:
+
+```sql
+ALTER TABLE nombre_tabla
+DROP COLUMN nombre_columna;
+```
+
+## Ejemplo aplicado
+
+Usando el nombre de nuestra tabla (`denue_inegi`), eliminamos la columna `per_ocu` de la siguiente manera:
+
+```sql
+ALTER TABLE denue_inegi
+DROP COLUMN per_ocu;
+```
+
+**Evidencia:** 
+<img width="960" height="503" alt="Captura de pantalla 2026-04-11 131537" src="https://github.com/user-attachments/assets/c98983f8-46e4-44c7-b905-119a272c1e23" />
+
+## Verificación de eliminación
+
+Después de eliminar la columna, verificamos que el cambio se haya realizado correctamente con el siguiente comando:
+
+```sql
+DESCRIBE denue_inegi;
+```
+
+Este comando nos muestra la estructura actual de la tabla.
+
+**Evidencia:** 
+<img width="960" height="503" alt="Captura de pantalla 2026-04-11 133249" src="https://github.com/user-attachments/assets/1b36bcf0-ab79-4fb9-a530-fd13f8161c35" />
+
+## Eliminación de múltiples columnas
+
+Una vez comprobado que el proceso funcionaba correctamente, procedimos a eliminar varias columnas al mismo tiempo utilizando la siguiente estructura:
+
+```sql
+ALTER TABLE nombre_tabla
+DROP COLUMN nombre_columna,
+DROP COLUMN nombre_columna;
+```
+
+## Ejecución continua
+
+Aplicamos este mismo proceso de forma consecutiva para eliminar todas las columnas que previamente se identificaron como innecesarias.
+
+**Evidencia:**  
+<img width="960" height="503" alt="Captura de pantalla 2026-04-11 134507" src="https://github.com/user-attachments/assets/ce8609d2-d4bb-4bcc-b2d2-25e0a3814608" />
+
+<img width="960" height="503" alt="Captura de pantalla 2026-04-11 134611" src="https://github.com/user-attachments/assets/085874dd-e25a-40b6-8cec-33f87037cb12" />
+
+## Verificación final
+
+Finalmente, utilizamos nuevamente el comando:
+
+```sql
+DESCRIBE denue_inegi;
+```
+
+Para confirmar que todas las columnas fueron eliminadas correctamente.
+
+**Resultado final:**  
+<img width="960" height="502" alt="Captura de pantalla 2026-04-11 134747" src="https://github.com/user-attachments/assets/809726ce-d29d-411c-88dd-c8ff134d35a7" />
+
+Cabe destacar que el archivo Excel **DENUE_INEGI** original contaba con **41 columnas**, y después del proceso de normalización quedaron únicamente **19 columnas**, las cuales serán utilizadas para futuros trabajos.
