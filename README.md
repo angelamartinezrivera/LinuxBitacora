@@ -724,7 +724,7 @@ Para confirmar que todas las columnas fueron eliminadas correctamente.
 
 Cabe destacar que el archivo Excel **DENUE_INEGI** original contaba con **41 columnas**, y después del proceso de normalización quedaron únicamente **19 columnas**, las cuales serán utilizadas para futuros trabajos.
 
-# Tablas específicas y Diccionarios
+# Tablas específicas y diccionarios
 
 Primero se realizó el diseño de las tablas y diccionarios de manera manual (en hoja), con el objetivo de estructurar correctamente la base de datos.
 
@@ -732,7 +732,7 @@ Primero se realizó el diseño de las tablas y diccionarios de manera manual (en
 
 ## Creación de diccionarios
 
-Se inició creando los **diccionarios**, ya que son las tablas con menor dependencia dentro del modelo.
+Se inició creando los **diccionarios**, ya que son las tablas con menor dependencia dentro del modelo, utilizando los siguientes códigos:
 
 ### Diccionario de Código de Actividad
 
@@ -762,6 +762,8 @@ CREATE TABLE Dic_Tipo_Asentamiento (
 ```
 
 ## Creación de tablas Maestras
+
+Después creamos las **Tablas Maestras**, utilizando los siguientes códigos:
 
 ### Tabla Ubicación
 
@@ -810,6 +812,8 @@ CREATE TABLE Negocio (
 ```
 
 ## Inserción de datos en diccionarios
+
+Después, se llenaron los **diccionarios** con datos utilizando la información del archivo de Excel **DENUE_INEGI**, mediante los siguientes códigos:
 
 ### Diccionario de Código de Actividad
 
@@ -913,6 +917,8 @@ VALUES
 ```
 
 ## Llenado de tablas Maestras
+
+Se llenaron las **Tablas Maestras** insertando la misma información del archivo de Excel **DENUE_INEGI**, mediante los siguientes códigos:
 
 ### Tabla Ubicación
 
