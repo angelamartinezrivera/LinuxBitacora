@@ -813,7 +813,7 @@ CREATE TABLE Negocio (
 
 ## Inserción de datos en diccionarios
 
-Después, se llenaron los **diccionarios** con datos utilizando la información del archivo de Excel **DENUE_INEGI**, mediante los siguientes códigos:
+Consultamos los valores de cada columna para sacar la información para los **diccionarios** y los llenamos con Insert de la siguiente manera:
 
 ### Diccionario de Código de Actividad
 
