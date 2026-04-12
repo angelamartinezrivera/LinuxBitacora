@@ -723,3 +723,262 @@ Para confirmar que todas las columnas fueron eliminadas correctamente.
 <img width="960" height="502" alt="Captura de pantalla 2026-04-11 134747" src="https://github.com/user-attachments/assets/809726ce-d29d-411c-88dd-c8ff134d35a7" />
 
 Cabe destacar que el archivo Excel **DENUE_INEGI** original contaba con **41 columnas**, y después del proceso de normalización quedaron únicamente **19 columnas**, las cuales serán utilizadas para futuros trabajos.
+
+# Tablas específicas y Diccionarios
+
+Primero se realizó el diseño de las tablas y diccionarios de manera manual (en hoja), con el objetivo de estructurar correctamente la base de datos.
+
+![Tablas](https://github.com/user-attachments/assets/5ef4c17a-f605-450c-89a8-85395b845faf)
+
+## Creación de diccionarios
+
+Se inició creando los **diccionarios**, ya que son las tablas con menor dependencia dentro del modelo.
+
+### Diccionario de Código de Actividad
+
+```sql
+CREATE TABLE Dic_Codigo_Actividad (
+    Id_cod_Act INT PRIMARY KEY,
+    Descripcion_Act VARCHAR(100)
+);
+```
+
+### Diccionario de Tipo de Vialidad
+
+```sql
+CREATE TABLE Dic_Tipo_Vialidad (
+    ID_Tip_vial INT PRIMARY KEY,
+    Desc_Tip_vial VARCHAR(100)
+);
+```
+
+### Diccionario de Tipo de Asentamiento
+
+```sql
+CREATE TABLE Dic_Tipo_Asentamiento (
+    ID_Tip_Asent INT PRIMARY KEY,
+    Desc_Tip_Asent VARCHAR(100)
+);
+```
+
+## Creación de tablas Maestras
+
+### Tabla Ubicación
+
+```sql
+CREATE TABLE Ubicacion (
+    ID_Ubicacion INT PRIMARY KEY,
+    Codigo_Postal INT,
+    Entidad VARCHAR(50),
+    Municipio VARCHAR(50),
+    Localidad VARCHAR(128),
+    Longitud DOUBLE,
+    Latitud DOUBLE,
+    ID_Tip_vial INT,
+    ID_Tip_Asent INT,
+    FOREIGN KEY (ID_Tip_vial) REFERENCES Dic_Tipo_Vialidad(ID_Tip_vial),
+    FOREIGN KEY (ID_Tip_Asent) REFERENCES Dic_Tipo_Asentamiento(ID_Tip_Asent)
+);
+```
+
+### Tabla Contacto
+
+```sql
+CREATE TABLE Contacto (
+    ID_Contacto INT PRIMARY KEY,
+    Telefono VARCHAR(50),
+    Correo VARCHAR(500),
+    www VARCHAR(50)
+);
+```
+
+### Tabla Negocio
+
+```sql
+CREATE TABLE Negocio (
+    ID INT PRIMARY KEY,
+    Nombre_Establecimiento VARCHAR(500),
+    Razon_Social VARCHAR(500),
+    Fecha_de_alta VARCHAR(50),
+    Id_cod_Act INT,
+    Id_Ubicacion INT,
+    Id_Contacto INT,
+    FOREIGN KEY (Id_cod_Act) REFERENCES Dic_Codigo_Actividad(Id_cod_Act),
+    FOREIGN KEY (Id_Ubicacion) REFERENCES Ubicacion(ID_Ubicacion),
+    FOREIGN KEY (Id_Contacto) REFERENCES Contacto(ID_Contacto)
+);
+```
+
+## Inserción de datos en diccionarios
+
+### Diccionario de Código de Actividad
+
+```sql
+INSERT INTO Dic_Codigo_Actividad (Id_cod_Act, Descripcion_Act) 
+VALUES 
+(114119, 'Pesca y captura de peces, crustaceos, moluscos y otras especies'),
+(114111, 'Pesca de Camaron'),
+(112512, 'Piscicultura y otra acuicultura, excepto camaronicultura'),
+(112511, 'Camaronicultura'), 
+(115113, 'Beneficio de productos agrícolas'), 
+(115119, 'Otros servicios relacionados con la agricultura'), 
+(115210, 'Servicios Relacionados con la cría y explotación de animales'),
+(114112, 'Pesca de túnidos'),
+(115111, 'Servicios de fumigación agricola'),
+(114113, 'Pesca de Sardina y Anchoveta'),
+(115112, 'Despepite de algodon'),
+(115310, 'Servicios relacionados con el aprovechamiento forestal');
+```
+
+### Diccionario de Tipo de Vialidad
+
+```sql
+INSERT INTO Dic_Tipo_Vialidad (ID_Tip_vial, Desc_Tip_vial) 
+VALUES
+(0,'SIN'),
+(1,'CALLE'),
+(2,'CARRETERA'),
+(3,'AVENIDA'),
+(4,'CAMINO'),
+(5,'TERRACERÍA'),
+(6,'PRIVADA'),
+(7,'VEREDA'),
+(8,'CALLEJÓN'),
+(9,'BRECHA'),
+(10,'BOULEVARD'),
+(11,'ANDADOR'),
+(12,'PROLONGACIÓN'),
+(13,'CALZADA'),
+(14,'CERRADA'),
+(15,'AMPLIACIÓN'),
+(16,'DIAGONAL'),
+(17,'PERIFÉRICO'),
+(18,'RETORNO'),
+(19,'CONTINUACIÓN'),
+(20,'EJE VIAL'),
+(21,'CORREDOR'),
+(22,'CIRCUITO'),
+(23,'PASAJE'),
+(24,'PEATONAL');
+```
+
+### Diccionario de Tipo de Asentamiento
+
+```sql
+INSERT INTO Dic_Tipo_Asentamiento (ID_Tip_Asent, Desc_Tip_Asent) 
+VALUES
+(2,'COLONIA'),
+(3,'EJIDO'),
+(4,'PUEBLO'),
+(5,'RANCHERÍA'),
+(6,'BARRIO'),
+(7,'PUERTO'),
+(8,'RANCHO'),
+(9,'SECTOR'),
+(10,'SECCIÓN'),
+(11,'PARAJE'),
+(12,'FRACCIONAMIENTO'),
+(13,'OTRO ESPECIFICAR'),
+(14,'PARQUE INDUSTRIAL'),
+(15,'COTO'),
+(16,'VILLA'),
+(17,'CANTÓN'),
+(18,'PRIVADA'),
+(19,'CIUDAD'),
+(20,'ZONA FEDERAL'),
+(21,'GRANJA'),
+(22,'PROLONGACIÓN'),
+(23,'EXHACIENDA'),
+(24,'MANZANA'),
+(25,'SUPERMANZANA'),
+(26,'FRACCIÓN'),
+(27,'CONDOMINIO'),
+(28,'AMPLIACIÓN'),
+(29,'NINGUNO'),
+(30,'AEROPUERTO'),
+(31,'UNIDAD'),
+(32,'REGIÓN'),
+(33,'ZONA INDUSTRIAL'),
+(34,'CONJUNTO HABITACIONAL'),
+(35,'UNIDAD HABITACIONAL'),
+(36,'RESIDENCIAL'),
+(37,'CORREDOR INDUSTRIAL'),
+(38,'ZONA MILITAR'),
+(39,'CIUDAD INDUSTRIAL'),
+(40,'INGENIO'),
+(41,'HACIENDA'),
+(42,'CUARTEL'),
+(43,'RINCONADA'),
+(44,'ZONA NAVAL');
+```
+
+## Llenado de tablas Maestras
+
+### Tabla Ubicación
+
+```sql
+INSERT INTO Ubicacion (
+    ID_Ubicacion, 
+    Codigo_Postal, 
+    Entidad, 
+    Municipio, 
+    Localidad, 
+    Longitud, 
+    Latitud, 
+    ID_Tip_vial, 
+    ID_Tip_Asent
+)
+SELECT 
+    di.id,
+    di.cod_postal, 
+    di.entidad, 
+    di.municipio, 
+    di.localidad, 
+    di.longitud, 
+    di.latitud,
+    v.ID_Tip_vial,
+    a.ID_Tip_Asent
+FROM denue_inegi di
+LEFT JOIN Dic_Tipo_Vialidad v ON di.tipo_vial = v.desc_tip_vial
+LEFT JOIN Dic_Tipo_Asentamiento a ON di.tipo_asent = a.desc_tip_asent;
+```
+
+### Tabla Contacto
+
+```sql
+INSERT INTO Contacto (
+    ID_Contacto, 
+    Telefono, 
+    Correo, 
+    www
+)
+SELECT 
+    id,
+    telefono, 
+    correoelec,
+    www
+FROM denue_inegi;
+```
+
+### Tabla Negocio
+
+```sql
+INSERT INTO Negocio (
+    ID, 
+    Nombre_Establecimiento, 
+    Razon_Social, 
+    Fecha_de_alta, 
+    Id_cod_Act, 
+    Id_Ubicacion, 
+    Id_Contacto
+)
+SELECT 
+    id,
+    nom_estab, 
+    raz_social, 
+    fecha_alta, 
+    codigo_act,
+    id,
+    id
+FROM denue_inegi;
+```
