@@ -988,3 +988,136 @@ SELECT
     id
 FROM denue_inegi;
 ```
+## --------------------------------------------------
+# Nueva Práctica #8
+## Programar soluciones para y sobre Hojas de Calculo 
+con **Google Apps Scripts**
+
+*Para ésta práctica se asume que el usuario sabe abrir acceder y trabajar en el editor y entorno de Google Apps Scripts*
+
+Para ésta practica se establecieron 2 ejercicios a resolver:
+- Una función que <u>muestro los negocios</u> que contengan lo que el **parametro pide que contenga**.
+- Otra funcion que <u>reciba</u> como parametro <u>el Tipo de Vialidad y el Nombre</u>, y **muestre** solo los** negocios que cumplan con esos dos parametros**.
+
+Para cumplir con los ejercicios separaremos la documentación en 3 partes: 
+- 1ra Función
+- 2da Función
+- Función Main (principal) facilitaremos el código
+
+**Facilitaremos el código y capturas de pantalla para asegurar que resuelva los ejercicios de la misma manera* * 
+![image.png](https://raw.githubusercontent.com/bucketio/img3/main/2026/04/26/1777270045885-500b89fc-cae2-48f8-91b3-a9f2c308bf14.png 'image.png')
+(Esta imagen muestra el editor donde se debe subir el código que veremos en nuestra docuemntación)
+
+## 1ra Función: 
+
+
+```Google Apps Scripts
+function ls(arg) {
+  
+  const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  const ultimaFila = sheet.getLastRow();
+ 
+  // si la hoja está vacía, devolvemos nada
+  if (ultimaFila < 2) return [];
+
+
+  // obtenemos los datos almacenandolos en una variable
+  const datos = getCeldas("A2:AN" + ultimaFila);
+ 
+  // indices de las columnas de los medios de contacto del negocio
+  const COL_NOMBRE = 1, COL_TEL = 34, COL_CORREO = 35, COL_WEB = 36;
+
+
+  // verificamos que 'datos' no sea null (celdas vacías) antes de usar filter
+  if (!datos) return [];
+
+
+  let resultados = datos.filter(fila => {
+    // PROTECCIÓN para verificar que la fila exista y tenga suficientes columnas
+    if (!fila || fila.length <= COL_WEB) return false;
+
+
+    // verificamos si la celda existe y si tiene texto (no solo espacios) en cada columna
+    let tieneT = fila[COL_TEL] && fila[COL_TEL].toString().trim().length > 0;
+    let tieneC = fila[COL_CORREO] && fila[COL_CORREO].toString().trim().length > 0;
+    let tieneW = fila[COL_WEB] && fila[COL_WEB].toString().trim().length > 0;
+
+
+    if (arg === 't') return tieneT;
+    if (arg === 'w') return tieneW;
+    if (arg === 'c') return tieneC;
+    if (arg === 'a') return (tieneT && tieneC && tieneW);
+    return false;
+  }).map(fila => fila[COL_NOMBRE]); 
+  // imprimen el nombre de los negocios que pasan el filtro que establecimos
+
+  console.log("Resultados encontrados:", resultados);
+  return resultados;
+}
+```
+
+
+## 2da Función: 
+
+```Google Apps Scripts
+function ls_v2(tipoVialidad, nombreVialidad) {
+  // necesitamos definir qué es 'ultimaFila' obteniéndola de la hoja activa
+  const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  const ultimaFila = sheet.getLastRow(); // <--- Aquí se define la variable y establecemos una conección 
+ 
+  // Ahora sí podemos usarla para construir el rango
+  const datos = getCeldas("A2:AN" + ultimaFila);
+ 
+  // mecanismo por si el calculo devuelve celdas vacías
+  if (!datos || !Array.isArray(datos)) return [];
+
+
+  const COL_NOMBRE = 1;   // Columna B donde se encuentra la variable "nom_vial"
+  const COL_TIPO_V = 6;   // Columna G donde se encuentra la variable "tipo_vial"
+  const COL_NOM_V = 7;    // Columna H donde se encuentra la variable "nom_vial"
+
+
+  let filtrados = datos.filter(fila => {
+    // Protección contra celdas vacías o filas incompletas
+    if (!fila || fila.length <= COL_NOM_V) return false;
+    if (!fila[COL_TIPO_V] || !fila[COL_NOM_V]) return false;
+
+
+    // Comparamos convirtiendo a texto y minúsculas para evitar errores
+    return fila[COL_TIPO_V].toString().toLowerCase().trim() === tipoVialidad.toLowerCase().trim() &&
+           fila[COL_NOM_V].toString().toLowerCase().trim() === nombreVialidad.toLowerCase().trim();
+  }).map(fila => fila[COL_NOMBRE]);
+
+
+  console.log("Resultados ls_v:", filtrados);
+  return filtrados;
+}
+
+```
+
+## Función Principal: 
+Esta es la parte mas crítica del código, las funciones fueron programadar para ser reutilizables con diferentes posibles variables, es decir, <u>funcionan a travez de argumentos establecidos desde afuera de la propia función</u>, eso significa que la unica forma de **ejecutar las funciónes** correctamente es **atravez de una nueva función principal**.
+A continuación se mostra cómo deve verse la función principal:
+![image.png](https://raw.githubusercontent.com/bucketio/img6/main/2026/04/26/1777271307431-a611d895-0336-455b-9753-6da591a06e3a.png 'image.png')
+Recomendamos probar solo una función a l avez, puesto que ambas hacen calculos muy tardados y con outputs que pueden ser muy complejos, si bien es completamente posible hacerlo, recomendamos ésto para no confundir los resultados de ambas funciones.
+Por lo que puedes dejar la función de ésta manera: 
+
+```Google Apps Scripts
+function main() {
+  ls("t")
+      // si arg es 't' muestra los negocios que tienen telefono
+      // si arg es 'w' muestra los negocios que tienen pagina web
+      //si arg es 'c' muestra los negocios que tienen correo electronico
+      //si es arg 'a' muestra solo los negocios que tienen los tres componentes: telefono, web y correo electronico
+}
+```
+O de ésta otra manera: 
+`function main() {
+ls_v2('CALLE','NINGUNO');
+}`
+
+
+Para ejecutar todo correctamente debes asegurarte de seleccionar la función main y presionar el botón "Ejecutar" tal y somo se ve en la imagen:
+
+![image.png](https://raw.githubusercontent.com/bucketio/img2/main/2026/04/26/1777272217235-b0936e3c-2041-4fa3-b651-7f8a49f8e893.png 'image.png')
+
